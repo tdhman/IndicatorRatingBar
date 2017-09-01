@@ -9,11 +9,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-/**
- * Created by hueman.trandiep on 01/09/2017.
- * Copyright Alteom@2017
- */
-
 public class RatingCell extends FrameLayout {
     private boolean isSquare;
 

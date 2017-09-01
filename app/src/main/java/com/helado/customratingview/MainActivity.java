@@ -3,15 +3,11 @@ package com.helado.customratingview;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.helado.indicatorratingbar.IndicatorRatingBar;
-import com.helado.indicatorratingbar.RateCellType;
-import com.helado.indicatorratingbar.RatingView;
-import com.helado.indicatorratingbar.utils.IndicatorPosition;
 
 import java.util.Arrays;
 

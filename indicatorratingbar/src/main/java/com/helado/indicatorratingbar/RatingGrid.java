@@ -1,10 +1,5 @@
 package com.helado.indicatorratingbar;
 
-/**
- * Created by hueman.trandiep on 01/09/2017.
- * Copyright Alteom@2017
- */
-
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v4.graphics.ColorUtils;
