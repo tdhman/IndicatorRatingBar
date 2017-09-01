@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="RatingTitle">
+        <item name="android:textSize">@dimen/rating_indicator_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="RatingCell">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="RatingCell.Rate">
+        <item name="android:textSize">@dimen/rating_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="rating_square_size">50dp</dimen>
+    <dimen name="rating_indicator_margin">5dp</dimen>
+    <dimen name="rating_text_size">24dp</dimen>
+    <dimen name="rating_indicator_text_size">14dp</dimen>
+</resources>

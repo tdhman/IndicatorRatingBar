@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.helado.indicatorratingbar.RatingView
+        android:id="@+id/rating_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layout_rating_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/rating_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/RatingTitle" />
+
+            <ImageView
+                android:id="@+id/rating_indicator"
+                android:src="@drawable/indicator_triangle_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/rating_title" />
+
+            <com.helado.indicatorratingbar.RatingGrid
+                android:id="@+id/rating_grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/rating_indicator_margin"
+                android:layout_marginBottom="@dimen/rating_indicator_margin"
+                app:layout_constraintTop_toBottomOf="@+id/rating_indicator" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </com.helado.indicatorratingbar.RatingView>
+
+</LinearLayout>
