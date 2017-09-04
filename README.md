@@ -1,7 +1,7 @@
 IndicatorRatingBar for Android
 ==========================
 
-Standalone Android widget for custom rating bar that uses square or rectangle cell with the top/bottom indicator text. The indicator text is only show if the selected rate is set.
+Standalone Android widget for custom rating bar that uses square or rectangle cell with the top/bottom indicator text. The indicator text is only shown if the selected rate is set.
 
 ![Screenshot](example.png)
 
