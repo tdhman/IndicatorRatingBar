@@ -23,7 +23,7 @@
         custom:minRate="1"
         custom:maxRate="7"
         custom:selectedRate="4"
-        custom:showIndicator="true"
+        custom:selectable="true"
         custom:indicatorPosition="indicatorDown"
         custom:indicatorTitle="Numeric Square Rating">
     </com.helado.indicatorratingbar.IndicatorRatingBar>
@@ -42,7 +42,7 @@
         custom:minRate="1"
         custom:maxRate="3"
         custom:selectedRate="2"
-        custom:showIndicator="true"
+        custom:selectable="true"
         custom:indicatorPosition="indicatorUp"
         custom:indicatorTitle="Numeric Rating">
     </com.helado.indicatorratingbar.IndicatorRatingBar>
@@ -58,7 +58,6 @@
         app:layout_constraintRight_toRightOf="parent"
         custom:rateType="custom"
         custom:rateShape="rectangle"
-        custom:showIndicator="true"
         custom:indicatorPosition="indicatorUp"
         custom:indicatorTitle="Star Rating">
     </com.helado.indicatorratingbar.IndicatorRatingBar>

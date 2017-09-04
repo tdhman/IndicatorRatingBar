@@ -28,6 +28,8 @@
                 android:src="@drawable/indicator_triangle_down"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/rating_indicator_margin"
+                android:layout_marginBottom="@dimen/rating_indicator_margin"
                 android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@+id/rating_title" />
 
@@ -35,8 +37,6 @@
                 android:id="@+id/rating_grid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/rating_indicator_margin"
-                android:layout_marginBottom="@dimen/rating_indicator_margin"
                 app:layout_constraintTop_toBottomOf="@+id/rating_indicator" />
 
         </android.support.constraint.ConstraintLayout>

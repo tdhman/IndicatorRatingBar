@@ -1,5 +1,7 @@
 package com.helado.indicatorratingbar;
 
+import com.helado.indicatorratingbar.utils.RateCellType;
+
 /**
  * Rate cell data model
  */
@@ -29,6 +31,16 @@ public class RateCellDescriptor {
     }
 
     private int cellColor;
+
+    public int getHighlightColor() {
+        return highlightColor;
+    }
+
+    public void setHighlightColor(int highlightColor) {
+        this.highlightColor = highlightColor;
+    }
+
+    private int highlightColor;
 
     public int getTextColor() {
         return textColor;

@@ -4,12 +4,15 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v4.graphics.ColorUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 
+import com.helado.indicatorratingbar.utils.RateCellType;
 import com.helado.indicatorratingbar.utils.RateColorUtils;
 
 import java.util.ArrayList;
@@ -27,8 +30,7 @@ public class RatingGrid extends GridView {
     private final RatingGrid.CellAdapter adapter = new CellAdapter();
     private final List<RateCellDescriptor> cells = new ArrayList<>();
 
-    private View highlightCell;
-    private RateCellType rateCellType;
+    private View highlightCellView;
     private RatingGridEvent ratingGridEvent;
 
     private int cellMinColor;
@@ -92,7 +94,6 @@ public class RatingGrid extends GridView {
      */
     public void init(List<String> rates, String selectedRate, RateCellType cellType) {
         this.cells.clear();
-        this.rateCellType = cellType;
 
         // Calculate and set color for the first half of ratings
         // with the cell's minColor
@@ -105,18 +106,13 @@ public class RatingGrid extends GridView {
 
             alpha += alphaRange;
             int color = ColorUtils.setAlphaComponent(cellMinColor, alpha);
+            cell.setCellColor(color);
+            cell.setHighlightColor(cellHighlightColor);
+            cell.setTextColor(getCellTextColor(color));
 
-            if (selectedRate != "" && selectedRate == cell.getValue()) {
-                cell.setCellColor(cellHighlightColor);
+            if (selectedRate != null && selectedRate == cell.getValue()) {
                 cell.setHighlighted(true);
-            } else {
-                cell.setCellColor(color);
-            }
-
-            if (RateColorUtils.isColorDark(cell.getCellColor())) {
-                cell.setTextColor(rateTextLightColor);
-            } else {
-                cell.setTextColor(rateTextDarkColor);
+                cell.setTextColor(getCellTextColor(cellHighlightColor));
             }
 
             cells.add(cell);
@@ -131,18 +127,13 @@ public class RatingGrid extends GridView {
 
             alpha += alphaRange;
             int color = ColorUtils.setAlphaComponent(cellMaxColor, alpha);
+            cell.setCellColor(color);
+            cell.setHighlightColor(cellHighlightColor);
+            cell.setTextColor(getCellTextColor(color));
 
-            if (selectedRate != "" && selectedRate == cell.getValue()) {
-                cell.setCellColor(cellHighlightColor);
+            if (selectedRate != null && selectedRate == cell.getValue()) {
                 cell.setHighlighted(true);
-            } else {
-                cell.setCellColor(color);
-            }
-
-            if (RateColorUtils.isColorDark(cell.getCellColor())) {
-                cell.setTextColor(rateTextLightColor);
-            } else {
-                cell.setTextColor(rateTextDarkColor);
+                cell.setTextColor(getCellTextColor(cellHighlightColor));
             }
 
             cells.add(cell);
@@ -172,8 +163,11 @@ public class RatingGrid extends GridView {
         for(int i=0; i<cells.size(); i++){
             RateCellDescriptor cell = cells.get(i);
             if (cell.getValue() == rate) {
-                cell.setCellColor(cellHighlightColor);
                 cell.setHighlighted(true);
+                cell.setTextColor(getCellTextColor(cell.getHighlightColor()));
+            } else {
+                cell.setHighlighted(false);
+                cell.setTextColor(getCellTextColor(cell.getCellColor()));
             }
         }
         validateAndUpdate();
@@ -183,8 +177,21 @@ public class RatingGrid extends GridView {
         ratingGridEvent = event;
     }
 
+    public void setCellSelectable(boolean selectable) {
+
+        validateAndUpdate();
+    }
+
     public View getHighlightCell() {
-        return highlightCell;
+        return highlightCellView;
+    }
+
+    private int getCellTextColor(int color) {
+        if (RateColorUtils.isColorDark(color)) {
+            return rateTextLightColor;
+        } else {
+            return rateTextDarkColor;
+        }
     }
 
     private void validateAndUpdate() {
@@ -202,8 +209,8 @@ public class RatingGrid extends GridView {
         }
 
         @Override public boolean isEnabled(int position) {
-            // Disable selectable
-            return false;
+            // Enable/disable item click
+            return true;
         }
 
         @Override public int getCount() {
@@ -219,8 +226,8 @@ public class RatingGrid extends GridView {
         }
 
         @Override public View getView(int position, View convertView, ViewGroup parent) {
-            RatingCell ratingCell;
-            RateCellDescriptor cell = cells.get(position);
+            final RatingCell ratingCell;
+            final RateCellDescriptor cell = cells.get(position);
 
             if (convertView == null) {
                 ratingCell = RatingCell.create(parent, inflater, cell, rateTypeFace);
@@ -230,8 +237,20 @@ public class RatingGrid extends GridView {
             }
 
             if(cell.getHighlighted()) {
-                highlightCell = ratingCell;
+                highlightCellView = ratingCell;
+                ratingCell.setBackgroundColor(cell.getHighlightColor());
+            } else {
+                ratingCell.setBackgroundColor(cell.getCellColor());
             }
+
+            ratingCell.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    setHighlightRate(cell.getValue());
+                    highlightCellView = ratingCell;
+                    invalidateViews();
+                }
+            });
 
             return ratingCell;
         }

@@ -1,4 +1,4 @@
-package com.helado.indicatorratingbar;
+package com.helado.indicatorratingbar.utils;
 
 /**
  * Rate cell type

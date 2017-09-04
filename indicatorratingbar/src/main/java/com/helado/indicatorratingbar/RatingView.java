@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.helado.indicatorratingbar.utils.IndicatorPosition;
+import com.helado.indicatorratingbar.utils.RateCellType;
 
 import java.util.List;
 
@@ -145,14 +146,16 @@ public class RatingView extends LinearLayout implements RatingGridEvent {
 
                     // Check if textview overflows the parent's border
                     // then reset position
-                    if (posTextX > 0) {
+                    //if (posTextX > 0) {
 
                         if (posTextX > (view.getWidth() - mIndicatorTextView.getWidth()))
                             posTextX = view.getWidth() - mIndicatorTextView.getWidth();
+                        else if (posTextX < 0)
+                            posTextX = cell.getX();
 
                         mIndicatorTextView.setX(posTextX);
                         mIndicatorTextView.setVisibility(VISIBLE);
-                    }
+                    //}
                     mIndicatorImage.setX(centerX - mIndicatorImage.getWidth() / 2);
                     mIndicatorImage.setVisibility(VISIBLE);
                 }
@@ -195,4 +198,7 @@ public class RatingView extends LinearLayout implements RatingGridEvent {
     public void setHighlightRate(String rate){
         mRatingGrid.setHighlightRate(rate);
     }
+
+    public void setCellSelectable(boolean selectable) { mRatingGrid.setCellSelectable(selectable); }
+
 }

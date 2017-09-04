@@ -2,7 +2,7 @@ package com.helado.indicatorratingbar;
 
 
 /**
- * Custom event delegate for custom RatingView.
+ * Custom event delegate for RatingGrid.
  * Use this interface to implement custom events in RatingGrid
  * and delegate to RatingView.
  */

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.helado.indicatorratingbar.utils.IndicatorPosition;
+import com.helado.indicatorratingbar.utils.RateCellType;
 import com.helado.indicatorratingbar.utils.RateType;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import java.util.List;
  */
 public class IndicatorRatingBar extends LinearLayout {
 
-    private boolean showIndicator;
+    private boolean selectable;
     private String indicatorTitle;
     private IndicatorPosition indicatorPosition;
     private RateType rateType;
@@ -77,7 +78,7 @@ public class IndicatorRatingBar extends LinearLayout {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.IndicatorRatingBar);
 
             try {
-                showIndicator = a.getBoolean(R.styleable.IndicatorRatingBar_showIndicator, false);
+                selectable = a.getBoolean(R.styleable.IndicatorRatingBar_selectable, true);
                 indicatorTitle = a.getString(R.styleable.IndicatorRatingBar_indicatorTitle);
 
                 int type = a.getInteger(R.styleable.IndicatorRatingBar_rateType, 0);
@@ -111,6 +112,7 @@ public class IndicatorRatingBar extends LinearLayout {
     }
 
     public void setupIndicatorBar(){
+        ratingView.setCellSelectable(selectable);
         if (indicatorPosition == IndicatorPosition.DOWN) {
             ratingView.setIndicatorImageRes(R.drawable.indicator_triangle_down);
             ratingView.setTextColor(ContextCompat.getColor(getContext(), R.color.colorAccent));

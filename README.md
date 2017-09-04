@@ -24,7 +24,7 @@ Include `IndicatorRatingBar` in your layout XML.
         custom:minRate="1"
         custom:maxRate="7"
         custom:selectedRate="4"
-        custom:showIndicator="true"
+        custom:selectable="true"
         custom:indicatorPosition="indicatorDown"
         custom:indicatorTitle="Numeric Square Rating">
     </com.helado.indicatorratingbar.IndicatorRatingBar>
@@ -38,6 +38,7 @@ Set the values in code
 IndicatorRatingBar indicatorRatingBar = (IndicatorRatingBar) findViewById(R.id.indicator_rating_view_3);
 indicatorRatingBar.setRateList(Arrays.asList("New star", "Rising star", "Super star"));
 indicatorRatingBar.setSelectedRate("Super star");
+indicatorRatingBar.setCellSelectable(false);
 ```
 
 Custom attributes
@@ -51,6 +52,6 @@ maxRate : [0 - 9] && maxRate > minRate
 selectedRate : [minRate, maxRate]
 indicatorPosition : UP | DOWN
 indicatorTitle : Title text of indicator bar
-showIndicator : true (default) | false
+selectable : true (default) | false
 ```
 

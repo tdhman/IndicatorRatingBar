@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="IndicatorRatingBar">
-        <attr name="showIndicator" format="boolean" />
+        <attr name="selectable" format="boolean" />
         <attr name="indicatorTitle" format="string" />
         <attr name="indicatorPosition" format="enum">
             <enum name="indicatorUp" value="0" />

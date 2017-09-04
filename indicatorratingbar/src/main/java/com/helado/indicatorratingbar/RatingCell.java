@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.helado.indicatorratingbar.utils.RateCellType;
+
 public class RatingCell extends FrameLayout {
     private boolean isSquare;
 
@@ -34,7 +36,11 @@ public class RatingCell extends FrameLayout {
             layoutId = R.layout.rating_square_cell;
 
         final RatingCell view = (RatingCell) inflater.inflate(layoutId, parent, false);
-        view.setBackgroundColor(cellDescriptor.getCellColor());
+
+        /*if (cellDescriptor.getHighlighted())
+            view.setBackgroundColor(cellDescriptor.getHighlightColor());
+        else
+            view.setBackgroundColor(cellDescriptor.getCellColor());*/
 
         TextView rateTextView = (TextView) view.findViewById(R.id.rate_text);
         rateTextView.setText(cellDescriptor.getValue().toString());
